@@ -1,0 +1,31 @@
+name: My First GitHub Action
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  test-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Print GitHub Information
+        run: |
+          echo "Repository: ${{ github.repository }}"
+          echo "Branch: ${{ github.ref }}"
+          echo "Triggered By: ${{ github.actor }}"
+          echo "Workflow: ${{ github.workflow }}"
+
+      - name: List Repository Files
+        run: ls -la
+
+      - name: Print Date
+        run: date
+
+      - name: Success Message
+        run: echo "🎉 GitHub Actions is working!"
