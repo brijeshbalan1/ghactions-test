@@ -34,5 +34,7 @@ jobs:
 
       - name: Success Message
         run: |
-          echo "::notice:: GitHub Actions is working!"
-          echo "::debug:: GitHub Actions is working!"
+          echo "::debug::message"
+          echo "::notice::message"
+          echo "::warning::message"
+          echo "::error::message"
