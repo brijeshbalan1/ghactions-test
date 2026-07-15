@@ -1,0 +1,36 @@
+name: Artifact Demo
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Create a file
+        run: |
+          mkdir output
+          echo "Hello from Build Job" > output/message.txt
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-output
+          path: output/
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: build-output
+          path: downloaded/
+
+      - name: Verify
+        run: |
+          ls -R downloaded
+          cat downloaded/message.txt
