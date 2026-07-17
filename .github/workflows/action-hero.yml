@@ -1,0 +1,16 @@
+name: CI Pipeline
+
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build and Test
+        uses: brijeshbalan1/ghactions-test/.github/actions/composite@main
+        with:
+          node-version: "20"
