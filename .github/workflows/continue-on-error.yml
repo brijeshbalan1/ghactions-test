@@ -1,0 +1,20 @@
+name: Without Continue On Error
+
+on:
+  workflow_dispatch:
+
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Step 1
+        run: echo "Starting workflow"
+
+      - name: Step 2 (Fails)
+        run: |
+          echo "Something went wrong"
+          exit 1
+
+      - name: Step 3
+        run: echo "This will never execute"
