@@ -12,6 +12,7 @@ jobs:
         run: echo "Starting workflow"
 
       - name: Step 2 (Fails)
+        continue-on-error: true
         run: |
           echo "Something went wrong"
           exit 1
